@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1>{{ assignment.title }}</h1>
+<div class="row">
+    <div class="col-md-8">
+        <img src="{% static assignment.image %}" alt="" width="100%">
+    </div>
+    <div class="col-md-4">
+        <h5>About the assignment:</h5>
+        <p>{{ assignment.description }}</p>
+        <br>
+        <h5>Deadlline:</h5>
+        <p>{{ assignment.deadline }}</p>
+    </div>
+</div>
+{% endblock %}
