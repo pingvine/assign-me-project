@@ -15,4 +15,4 @@ def assignment_detail(request, pk):
     context = {
         'assignment': assignment
     }
-    return render(request, 'project_detail.html', context)
+    return render(request, 'assignment_detail.html', context)
