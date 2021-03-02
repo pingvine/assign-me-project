@@ -6,3 +6,6 @@ class Assignment(models.Model):
     description = models.TextField()
     deadline = models.DateField()
     image = models.FilePathField(path="/img")
+
+    def __str__(self):
+        return self.title
