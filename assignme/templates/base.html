@@ -16,6 +16,16 @@
               <a class="nav-link" href="{% url 'course_index' %}">Courses</a>
             </li>
           </ul>
+          <ul class="navbar-nav navbar-right">
+            <li class="nav-item">
+              <a class="nav-link"
+              {% if user.is_authenticated %}
+                href="{% url 'logout' %}">Log Out</a>
+              {% else %}
+                href="{% url 'login' %}">Log In</a>
+              {% endif %}
+            </li>
+          </ul>
         </div>
     </div>
 </nav>
