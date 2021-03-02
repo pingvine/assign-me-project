@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+
+class Assignment(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    deadline = models.DateField()
+    image = models.FilePathField(path="/img")
