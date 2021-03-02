@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Assignments</h1>
+<div class="row">
+{% for assignment in assignments %}
+    <div class="col-md-4">
+        <div class="card md-2">
+            <img class="card-img-top" src="{% static assignment.image %}">
+            <div class="card-body">
+                <h5 class="card-title">{{ assignment.title }}</h5>
+                <p class="card-text">{{ assignment.description }}</p>
+                <a href="{% url 'assignment_detail' assignment.pk %}"
+                   class="btn btn-primary">
+                   Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
