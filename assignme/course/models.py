@@ -26,7 +26,4 @@ class Comment(models.Model):
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
 
     def __str__(self):
-        rep = self.author + ': '
-        if len(self.body) > 40:
-            return rep + self.body[0:40] + '...'
-        return rep + self.body
+        return '{author} : {body}'.format(author=self.author, body=self.body)
