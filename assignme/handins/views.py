@@ -9,12 +9,11 @@ def handins_index(request):
     handins = Handin.objects.all().order_by('-created_on')
     context = {
         'handins': handins,
-        "form": HandinForm(),
     }
     return render(request, 'handins_index.html', context)
 
 
-@ login_required
+@login_required
 def handin_detail(request, pk):
     handin = Handin.objects.get(pk=pk)
 
@@ -24,7 +23,7 @@ def handin_detail(request, pk):
     return render(request, "handin_detail.html", context)
 
 
-@ login_required
+@login_required
 def new_handin(request):
     form = HandinForm()
 
@@ -34,6 +33,7 @@ def new_handin(request):
             handin = Handin(
                 holder=form.cleaned_data['holder'],
                 attached_files=form.cleaned_data['attached_files'],
+                assignment_type=form.cleaned_data['assignment_type'],
             )
             handin.save()
     context = {
