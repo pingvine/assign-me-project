@@ -9,23 +9,22 @@ def handins_index(request):
     handins = Handin.objects.all().order_by('-created_on')
     context = {
         'handins': handins,
-        'form': HandinForm(),
+        "form": HandinForm(),
     }
     return render(request, 'handins_index.html', context)
 
 
-@login_required
+@ login_required
 def handin_detail(request, pk):
     handin = Handin.objects.get(pk=pk)
 
     context = {
         "handin": handin,
-        "form": HandinForm(),
     }
     return render(request, "handin_detail.html", context)
 
 
-@login_required
+@ login_required
 def new_handin(request):
     form = HandinForm()
 

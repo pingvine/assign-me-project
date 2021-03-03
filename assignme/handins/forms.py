@@ -1,5 +1,6 @@
 from django import forms
-from .models import Assignment, Handin
+from .models import Handin
+
 
 class HandinForm(forms.Form):
     class Meta:
