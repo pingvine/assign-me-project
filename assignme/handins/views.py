@@ -9,6 +9,7 @@ def handins_index(request):
     handins = Handin.objects.all().order_by('-created_on')
     context = {
         'handins': handins,
+        'form': HandinForm(),
     }
     return render(request, 'handins_index.html', context)
 
@@ -25,8 +26,6 @@ def handin_detail(request, pk):
 
 @login_required
 def new_handin(request):
-    form = HandinForm()
-
     if request.method == 'POST':
         form = HandinForm(request.POST)
         if form.is_valid():
@@ -38,6 +37,5 @@ def new_handin(request):
             handin.save()
     context = {
         "handin": handin,
-        "form": form,
     }
     return render(request, "handin_detail.html", context)
