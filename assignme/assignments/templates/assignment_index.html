@@ -9,7 +9,7 @@
             <img class="card-img-top" src="{% static assignment.image %}">
             <div class="card-body">
                 <h5 class="card-title">{{ assignment.title }}</h5>
-                <p class="card-text">{{ assignment.description }}</p>
+                <p class="card-text">{{ assignment.description | slice:":200" }}...</p>
                 <a href="{% url 'assignment_detail' assignment.pk %}"
                    class="btn btn-primary">
                    Read More
