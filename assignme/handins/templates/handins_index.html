@@ -1,6 +1,26 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
-<h1>Handins</h1>
-<div class="row"></div>
+<div class="col-md-8 offset-md-2">
+    <div class="d-flex">
+        <div class="mr-auto p2">
+            <h1>Handins</h1>
+        </div>
+        <div class="p2">
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#new_handin_dialog">New Handin</button>
+        </div>
+    </div>
+    <hr>
+    {% for handin in handins %}
+        <small>
+            {{ handin.created_on }}
+        </small>
+        <h5><a href="{% url 'handin_detail' handin.pk %}">
+            {{ handin.assignment_type }} : {{ handin.holder }}
+        </a></h5>
+    {% endfor %}
+</div>
+
+{% include "handin_form.html" %}
+
 {% endblock %}
