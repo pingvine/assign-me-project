@@ -8,5 +8,5 @@ __pycache__/
 db.sqlite3
 migrations/
 
-# Static images
-assignme/assignments/static/img/
+# Statics
+assignme/static
