@@ -5,9 +5,9 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
-                <form action="/handins/new/" method="post">{% csrf_token %}
+                <form action="/handins/new/" method="post" enctype="multipart/form-data">{% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary" value="Submit">
                 </form>
             </div>
         </div>

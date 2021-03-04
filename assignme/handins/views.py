@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import HandinForm
 from .models import Handin
@@ -27,15 +28,15 @@ def handin_detail(request, pk):
 @login_required
 def new_handin(request):
     if request.method == 'POST':
-        form = HandinForm(request.POST)
+        form = HandinForm(request.POST, request.FILES)
         if form.is_valid():
-            handin = Handin(
-                holder=form.cleaned_data['holder'],
-                attached_files=form.cleaned_data['attached_files'],
-                assignment_type=form.cleaned_data['assignment_type'],
-            )
-            handin.save()
+            form.save()
+    else:
+        form = HandinForm()
+    handin = form.instance
+
     context = {
+        "form": form,
         "handin": handin,
     }
     return render(request, "handin_detail.html", context)
