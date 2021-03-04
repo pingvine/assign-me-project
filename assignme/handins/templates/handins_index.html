@@ -11,14 +11,26 @@
         </div>
     </div>
     <hr>
-    {% for handin in handins %}
-        <small>
-            {{ handin.created_on }}
-        </small>
-        <h5><a href="{% url 'handin_detail' handin.pk %}">
-            {{ handin.assignment_type }} : {{ handin.holder }}
-        </a></h5>
-    {% endfor %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Assignment</th>
+                <th scope="col">Student</th>
+                <th scope="col">Submitted</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for handin in handins %}
+                <tr>
+                    <th scope="row"><a href="{% url 'handin_detail' handin.pk %}">{{ handin.pk }}</a></th>
+                    <td><a href="{% url 'handin_detail' handin.pk %}">{{ handin.assignment_type }}</a></td>
+                    <td><a href="{% url 'handin_detail' handin.pk %}">{{ handin.holder }}</a></td>
+                    <td><a href="{% url 'handin_detail' handin.pk %}">{{ handin.created_on }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 {% include "handin_form.html" %}
