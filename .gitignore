@@ -10,3 +10,6 @@ migrations/
 
 # Statics
 assignme/static
+
+# Uploaded content
+assignme/media
