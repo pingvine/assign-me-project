@@ -4,7 +4,7 @@ from django.db import models
 from .constants import PERSON_STATUSES
 
 
-class person(models.Model):
+class Person(models.Model):
 
     class Meta:
         verbose_name = 'person'
@@ -18,7 +18,7 @@ class person(models.Model):
     email = models.EmailField('email', blank=True)
     cellphone = models.CharField('phone', max_length=15, blank=True)
     image = models.ImageField('picture',
-                              upload_to='/img/profiles',
+                              upload_to='img/profiles',
                               blank=True,
                               null=True)
 
@@ -29,3 +29,6 @@ class person(models.Model):
         verbose_name='user',
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return '{} - {}'.format(self.first_name, self.last_name)
