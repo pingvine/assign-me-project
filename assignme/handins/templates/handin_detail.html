@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block page_content %}
 <div class="col-md-8 offset-md-2">
-    <h1>{{ handin.assignment_type}} : {{ handin.holder }}</h1>
+    <h1>{{ handin.assignment.title}} : {{ handin.holder }}</h1>
     <hr>
     <small>
         {{ handin.created_on }} | {{ handin.holder }}
