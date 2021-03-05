@@ -6,10 +6,15 @@
     <small>
         {{ handin.created_on }} | {{ handin.holder }}
     </small>
-    <div class="col-md-4">
+    <div class="col-md-8">
         <h5>Attached files:</h5>
         <p>{{ handin.attached_files }}</p>
         <br>
     </div>
+    <pre><code class={{ file_extension }}>
+        {{ file_content }}
+    </code></pre>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 {% endblock %}

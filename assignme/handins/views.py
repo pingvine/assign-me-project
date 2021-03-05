@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import HandinForm
 from .models import Handin
+import os
 
 
 @login_required
@@ -18,9 +19,17 @@ def handins_index(request):
 @login_required
 def handin_detail(request, pk):
     handin = Handin.objects.get(pk=pk)
+    absolute_path = os.getcwd() + handin.attached_files.url
+    f = open(absolute_path, 'r')
+    file_content = f.read()
+    f.close()
+    file_name, file_extension = os.path.splitext(absolute_path)
 
     context = {
         "handin": handin,
+        "file_content": file_content,
+        "file_name": file_name,
+        "file_extension": file_extension,
     }
     return render(request, "handin_detail.html", context)
 
@@ -35,8 +44,4 @@ def new_handin(request):
         form = HandinForm()
     handin = form.instance
 
-    context = {
-        "form": form,
-        "handin": handin,
-    }
-    return render(request, "handin_detail.html", context)
+    return redirect('handin_detail', handin.pk)
