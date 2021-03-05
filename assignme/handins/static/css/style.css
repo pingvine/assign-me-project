@@ -7,11 +7,15 @@ td>a {
     display: block;
 }
 
-.row {
-    justify-content: space-between;
-}
-
 .header {
     margin-top: 10px;
     align-items: center;
+}
+
+.login-pane {
+    margin-top: 10%;
+}
+
+.row {
+    justify-content: space-between;
 }
