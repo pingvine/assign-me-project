@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_REDIRECT_URL = '/assignments'
+LOGIN_REDIRECT_URL = '/handins'
 LOGOUT_REDIRECT_URL = '/course'
 
 
