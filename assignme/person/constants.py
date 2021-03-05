@@ -1,15 +1,15 @@
-TYPE_ASSISTANT = 'Assistant'
-TYPE_COURSE_ASSISTANT = 'Course Assistant'
-TYPE_COURSE_LEADER = 'Course Leader'
-TYPE_EXAMINER = 'Examiner'
-TYPE_ADMINISTRATOR = 'Administrator'
-TPYE_EXTERNAL = 'External'
+STATUS_ASSISTANT = 'Assistant'
+STATUS_COURSE_ASSISTANT = 'Course Assistant'
+STATUS_COURSE_LEADER = 'Course Leader'
+STATUS_EXAMINER = 'Examiner'
+STATUS_ADMINISTRATOR = 'Administrator'
+STATUS_EXTERNAL = 'External'
 
-PERSON_TYPES = (
-    (TYPE_ASSISTANT, 'Assistant'),
-    (TYPE_COURSE_ASSISTANT, 'Course Assistant'),
-    (TYPE_COURSE_LEADER, 'Course Leader'),
-    (TYPE_EXAMINER, 'Examiner'),
-    (TYPE_ADMINISTRATOR, 'Administrator'),
-    (TPYE_EXTERNAL, 'External'),
+PERSON_STATUSES = (
+    (STATUS_ASSISTANT, 'Assistant'),
+    (STATUS_COURSE_ASSISTANT, 'Course Assistant'),
+    (STATUS_COURSE_LEADER, 'Course Leader'),
+    (STATUS_EXAMINER, 'Examiner'),
+    (STATUS_ADMINISTRATOR, 'Administrator'),
+    (STATUS_EXTERNAL, 'External'),
 )
