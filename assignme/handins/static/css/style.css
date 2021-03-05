@@ -1,3 +1,17 @@
-td > a {
+footer {
+    display: flex;
+    flex-direction: column;
+}
+
+td>a {
     display: block;
-  }
+}
+
+.row {
+    justify-content: space-between;
+}
+
+.header {
+    margin-top: 10px;
+    align-items: center;
+}

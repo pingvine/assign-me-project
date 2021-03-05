@@ -10,7 +10,6 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
@@ -37,6 +36,43 @@
   <div class="container">
       {% block page_content %}{% endblock %}
   </div>
+
+<footer class="bg-light text-lg-start fixed-bottom">
+  <div class="container p-4">
+    <div class="row">
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase text-left">AssignMe Project</h5>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+          molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
+          voluptatem veniam, est atque cumque eum delectus sint!
+        </p>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-0">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="https://www.ida.liu.se/webreg-beta/" target="_blank" class="text-dark">Webreg</a>
+          </li>
+          <li>
+            <a href="https://www.ida.liu.se/projects/lupp/admin/admin.php" target="_blank" class="text-dark">LUPP</a>
+          </li>
+          <li>
+            <a href="https://github.com/pingvine/assign-me-project" target="_blank" class="text-dark">Source Code</a>
+          </li>
+          <li>
+            <a href="https://github.com/pingvine/assign-me-project/issues/new" target="_blank" class="text-dark">Report Issue</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © {% now "Y" %} Copyright:
+    <a class="text-dark" href="https://github.com/pingvine">Jesper Jonsson</a>
+  </div>
+</footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
