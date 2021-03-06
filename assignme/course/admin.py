@@ -1,5 +1,5 @@
 from django.contrib import admin
-from course.models import Category, Comment, Post
+from course.models import Category, Comment, Course
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -10,10 +10,10 @@ class CommentAdmin(admin.ModelAdmin):
     pass
 
 
-class PostAdmin(admin.ModelAdmin):
+class CourseAdmin(admin.ModelAdmin):
     pass
 
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comment, CommentAdmin)
-admin.site.register(Post, PostAdmin)
+admin.site.register(Course, CourseAdmin)

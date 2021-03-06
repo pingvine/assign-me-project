@@ -3,18 +3,18 @@
 <div class="col-md-8 offset-md-2">
     <h1>{{ category | title }}</h1>
     <hr>
-    {% for post in posts %}
-    <h2><a href="{% url 'course_detail' post.pk %}">{{ post.title }}</a></h2>
+    {% for course in courses %}
+    <h2><a href="{% url 'course_detail' course.pk %}">{{ course.title }}</a></h2>
     <small>
-        {{ post.created_on.date }} |&nbsp;
+        {{ course.created_on.date }} |&nbsp;
         Categories:&nbsp;
-        {% for category in post.categories.all %}
+        {% for category in course.categories.all %}
         <a href="{% url 'course_category' category.name %}">
             {{ category.name }}
         </a>&nbsp;
         {% endfor %}
     </small>
-    <p>{{ post.body | slice:":400"}}...</p>
+    <p>{{ course.body | slice:":400"}}...</p>
     {% endfor %}
 </div>
 {% endblock %}

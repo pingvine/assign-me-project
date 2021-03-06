@@ -1,31 +1,31 @@
 from django.shortcuts import render
 from .forms import CommentForm
-from .models import Comment, Post
+from .models import Comment, Course
 
 
 def course_index(request):
-    posts = Post.objects.all().order_by('-created_on')
+    courses = Course.objects.all().order_by('-created_on')
     context = {
-        "posts": posts,
+        "courses": courses,
     }
     return render(request, "course_index.html", context)
 
 
 def course_category(request, category):
-    posts = Post.objects.filter(
+    courses = Course.objects.filter(
         categories__name__contains=category
     ).order_by(
         '-created_on'
     )
     context = {
         "category": category,
-        "posts": posts,
+        "courses": courses,
     }
     return render(request, "course_category.html", context)
 
 
 def course_detail(request, pk):
-    post = Post.objects.get(pk=pk)
+    course = Course.objects.get(pk=pk)
 
     form = CommentForm()
     if request.method == 'POST':
@@ -34,13 +34,13 @@ def course_detail(request, pk):
             comment = Comment(
                 author=form.cleaned_data["author"],
                 body=form.cleaned_data["body"],
-                post=post,
+                course=course,
             )
             comment.save()
 
-    comments = Comment.objects.filter(post=post)
+    comments = Comment.objects.filter(course=course)
     context = {
-        "post": post,
+        "course": course,
         "comments": comments,
         "form": form,
     }
