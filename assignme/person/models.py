@@ -32,5 +32,7 @@ class Person(models.Model):
     )
     courses = models.ManyToManyField(Course, related_name="staff", blank=True)
 
+    objects = models.Manager()
+
     def __str__(self):
         return '{} {}'.format(self.first_name, self.last_name)

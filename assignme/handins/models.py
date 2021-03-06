@@ -17,6 +17,8 @@ class Handin(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     assignment = models.ForeignKey('Assignment', on_delete=models.CASCADE)
 
+    objects = models.Manager()
+
     def filename(self):
         return os.path.basename(self.attached_files.name)
 
@@ -28,6 +30,8 @@ class Assignment(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     deadline = models.DateField()
+
+    objects = models.Manager()
 
     def __str__(self):
         return self.title
