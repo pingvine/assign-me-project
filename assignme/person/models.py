@@ -1,6 +1,7 @@
 import os
 from django.contrib.auth.models import User
 from django.db import models
+from course.models import Post
 from .constants import PERSON_STATUSES
 
 
@@ -29,6 +30,7 @@ class Person(models.Model):
         verbose_name='user',
         on_delete=models.CASCADE,
     )
+    courses = models.ManyToManyField(Post, related_name="staff", blank=True)
 
     def __str__(self):
         return '{} {}'.format(self.first_name, self.last_name)

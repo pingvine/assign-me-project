@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
-<div class="col-md-8 offset-md-2">
+<div class="col-md-10 offset-md-1">
     <div class="d-flex header">
         <div class="mr-auto p2">
             <h1>Persons</h1>
@@ -14,6 +14,7 @@
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Status</th>
+                <th scope="col">Courses</th>
                 <th scope="col">Email</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
                     <td>{{ person.first_name }}</th>
                     <td>{{ person.last_name }}</td>
                     <td>{{ person.status }}</td>
+                    <td>{{ person.courses.all | join:', ' | truncatewords:'3' }}</td>
                     <td>{{ person.email }}</td>
                 </tr>
             {% endfor %}

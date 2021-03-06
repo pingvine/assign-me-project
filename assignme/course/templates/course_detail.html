@@ -12,6 +12,12 @@
         {% endfor %}
     </small>
     <p>{{ post.body | linebreaks }}</p>
+    <h3>Course Staff</h3>
+        <ul class="staff-list">
+            {% for person in post.staff.all %}
+                <li>{{ person.status }}: {{ person }}</li>
+            {% endfor %}
+        </ul>
     <h3>Leave a comment:</h3>
     <form action="/course/{{ post.pk }}/" method="post">
         {% csrf_token %}
