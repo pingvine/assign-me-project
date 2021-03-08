@@ -4,8 +4,8 @@
     <h1>Site index</h1>
     <hr>
     <p>
-        <button type="button" class="btn btn-default btn-block">Courses</button>
-        <button type="button" class="btn btn-default btn-block">Handins</button>
-        <button type="button" class="btn btn-default btn-block">Persons</button>
+        <a role="button" class="btn btn-secondary btn-block" href="{% url 'course_index' %}">Courses</a>
+        <a role="button" class="btn btn-secondary btn-block" href="{% url 'handins_index' %}">Handins</a>
+        <a role="button" class="btn btn-secondary btn-block" href="{% url 'person_index' %}">Staff</a>
 </div>
 {% endblock %}
