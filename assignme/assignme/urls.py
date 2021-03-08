@@ -25,3 +25,6 @@ urlpatterns = [
     path("handins/", include("handins.urls")),
     path("person/", include("person.urls")),
 ]
+
+handler404 = 'assignme.views.error_404'
+handler500 = 'assignme.views.error_500'
