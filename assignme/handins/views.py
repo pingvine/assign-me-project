@@ -23,13 +23,14 @@ def handin_detail(request, pk):
     f = open(absolute_path, 'r')
     file_content = f.read()
     f.close()
-    file_name, file_extension = os.path.splitext(absolute_path)
+    file_name = os.path.splitext(absolute_path)[0]
+    file_type = handin.get_format_type()
 
     context = {
         "handin": handin,
         "file_content": file_content,
         "file_name": file_name,
-        "file_extension": file_extension,
+        "file_type": file_type,
     }
     return render(request, "handin_detail.html", context)
 
