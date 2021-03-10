@@ -60,3 +60,59 @@ class HandinIndexViewTest(TestCase):
         self.assertEqual(str(response.context['user']), 'testuser1')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'handins_index.html')
+
+
+class HandinDetailViewTest(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        test_user1 = User.objects.create_user(
+            username='testuser1', password='1X<ISRUkw+tuK')
+
+        test_user1.save()
+
+        assignment = Assignment(title='TDDD11',
+                                description='A desc.',
+                                deadline=datetime.today())
+        assignment.save()
+
+        Handin.objects.create(
+            holder=f'Studentname',
+            attached_files=f'tests/test.txt',
+            assignment=assignment)
+
+    def test_view_url_exists_at_desired_location(self):
+        self.client.login(username='testuser1', password='1X<ISRUkw+tuK')
+        response = self.client.get('/handins/1/')
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_accessible_by_name(self):
+        self.client.login(username='testuser1', password='1X<ISRUkw+tuK')
+        response = self.client.get(reverse('handin_detail', args=[1]))
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        self.client.login(username='testuser1', password='1X<ISRUkw+tuK')
+        response = self.client.get(reverse('handin_detail', args=[1]))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(
+            response, 'handin_detail.html')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'handin_detail.html')
+
+    def test_redirect_if_not_logged_in(self):
+        response = self.client.get(reverse('handin_detail', args=[1]))
+
+        self.assertRedirects(response, '/accounts/login/?next=/handins/1/')
+
+    def test_logged_in_uses_correct_template(self):
+        self.client.login(username='testuser1', password='1X<ISRUkw+tuK')
+        response = self.client.get(reverse('handin_detail', args=[1]))
+
+        self.assertEqual(str(response.context['user']), 'testuser1')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'handin_detail.html')
