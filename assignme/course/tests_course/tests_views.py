@@ -29,3 +29,28 @@ class CourseIndexViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(
             response, 'course_index.html')
+
+
+class CourseDetailViewTest(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+
+        Course.objects.create(
+            title=f'Kurs 1',
+            body=f'Beskrivning 1',
+        )
+
+    def test_view_url_exists_at_desired_location(self):
+        response = self.client.get('/course/1/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_accessible_by_name(self):
+        response = self.client.get(reverse('course_detail', args=[1]))
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        response = self.client.get(reverse('course_detail', args=[1]))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(
+            response, 'course_detail.html')
