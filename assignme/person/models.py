@@ -30,9 +30,36 @@ class Person(models.Model):
         verbose_name='user',
         on_delete=models.CASCADE,
     )
-    courses = models.ManyToManyField(Course, related_name="staff", blank=True)
+    courses = models.ManyToManyField(
+        Course, related_name="staff", blank=True)
+
+    website = models.CharField(
+        'website url', max_length=100, blank=True)
+    github = models.CharField(
+        'github username', max_length=50, blank=True)
+    twitter = models.CharField(
+        'twitter username', max_length=50, blank=True)
+    instagram = models.CharField(
+        'instagram username', max_length=50, blank=True)
+    facebook = models.CharField(
+        'facebook url', max_length=100, blank=True)
 
     objects = models.Manager()
 
     def __str__(self):
         return '{} {}'.format(self.first_name, self.last_name)
+
+    def get_website_label(self):
+        return self.website.split('.', 1)[1]
+
+    def get_github_url(self):
+        github_url_start = 'https://github.com/'
+        return github_url_start + self.github
+
+    def get_twitter_url(self):
+        github_url_start = 'https://twitter.com/'
+        return github_url_start + self.twitter
+
+    def get_instagram_url(self):
+        github_url_start = 'https://www.instagram.com/'
+        return github_url_start + self.instagram
