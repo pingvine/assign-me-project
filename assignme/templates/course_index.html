@@ -3,22 +3,32 @@
 <div class="col-md-8 offset-md-2 header">
     <h1>Courses</h1>
     <hr>
-    {% for course in courses %}
-        <h3><a href="{% url 'course_detail' course.pk %}">{{ course.code }} - {{ course.title }}</a></h3>
-        <small>
-            Examiner:
-            {{ course.get_examiner }}&nbsp;&nbsp;|&nbsp;
-            Last updated:
-            {{ course.created_on.date }}&nbsp;&nbsp;|&nbsp;
-            Categories:
-            {% for category in course.categories.all %}
-                <a href="{% url 'course_category' category.name %}">
-                    {{ category.name }}
-                </a>&nbsp;
-            {% endfor %}
-        </small>
-        <p>{{ course.body | slice:":400"}}...</p>
-    {% endfor %}
+    <div class="card-deck">
+        <div class="row">
+        {% for course in courses %}
+            <div class="col-12">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title"><a href="{% url 'course_detail' course.pk %}">{{ course.code }} - {{ course.title }}</a></h3>
+                        <small class="card-subtitle mb-2 text-muted">
+                            Examiner:
+                            {{ course.get_examiner }}&nbsp;&nbsp;|&nbsp;
+                            Last updated:
+                            {{ course.created_on.date }}&nbsp;&nbsp;|&nbsp;
+                            Categories:
+                            {% for category in course.categories.all %}
+                                <a href="{% url 'course_category' category.name %}">
+                                    {{ category.name }}
+                                </a>&nbsp;
+                            {% endfor %}
+                        </small>
+                        <p class="card-text">{{ course.body | slice:":400"}}...</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}
     
