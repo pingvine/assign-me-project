@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 from django.db import models
+from django.urls import reverse
 from .constants import FILE_TYPES, FILE_TYPE_DEFAULT
 
 
@@ -33,6 +34,9 @@ class Handin(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.holder, self.created_on)
+
+    def get_absolute_url(self):
+        return reverse("handin_detail", kwargs={"pk": self.pk})
 
     def get_format_type(self):
         return get_formating_type_from_name(self.attached_files.name)
