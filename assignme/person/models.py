@@ -1,6 +1,7 @@
 import os
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 from course.models import Course
 from .constants import PERSON_STATUSES
 
@@ -48,6 +49,9 @@ class Person(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.first_name, self.last_name)
+
+    def get_absolute_url(self):
+        return reverse("person_detail", kwargs={"pk": self.pk})
 
     def get_website_label(self):
         return self.website.split('.', 1)[1]
