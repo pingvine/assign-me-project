@@ -24,7 +24,7 @@
                     <td><a href="{% url 'person_detail' person.pk %}">{{ person.first_name }}</a></th>
                     <td><a href="{% url 'person_detail' person.pk %}">{{ person.last_name }}</a></td>
                     <td class="d-none d-lg-table-cell">{{ person.status }}</td>
-                    <td class="d-none d-lg-table-cell">{{ person.courses.all | join:', ' | truncatewords:'3' }}</td>
+                    <td class="d-none d-lg-table-cell">{{ person.courses.all | join:", " | truncatewords:'3' }}</td>
                     <td class="d-none d-lg-table-cell">{{ person.email }}</td>
                 </tr>
             {% endfor %}

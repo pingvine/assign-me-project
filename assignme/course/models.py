@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from person.constants import STATUS_EXAMINER
 
 
 class Category(models.Model):
@@ -12,6 +13,7 @@ class Category(models.Model):
 
 
 class Course(models.Model):
+    code = models.CharField(max_length=8)
     title = models.CharField(max_length=255)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -24,7 +26,12 @@ class Course(models.Model):
         return reverse("course_detail", kwargs={"pk": self.pk})
 
     def __str__(self):
-        return self.title
+        return self.code
+
+    def get_examiner(self):
+        for member in self.staff.all():
+            if member.status == STATUS_EXAMINER:
+                return member
 
 
 class Comment(models.Model):

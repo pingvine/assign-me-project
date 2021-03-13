@@ -25,7 +25,7 @@ class CourseModelTest(TestCase):
 
     def test_object_name_is_title(self):
         course = Course.objects.get(id=1)
-        expected_object_name = course.title
+        expected_object_name = course.code
         self.assertEqual(expected_object_name, str(course))
 
     def test_get_absolute_url(self):

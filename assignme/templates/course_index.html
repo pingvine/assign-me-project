@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-2 header">
+    <h1>Courses</h1>
+    <hr>
+    {% for course in courses %}
+        <h3><a href="{% url 'course_detail' course.pk %}">{{ course.code }} - {{ course.title }}</a></h3>
+        <small>
+            Examiner:
+            {{ course.get_examiner }}&nbsp;&nbsp;|&nbsp;
+            Last updated:
+            {{ course.created_on.date }}&nbsp;&nbsp;|&nbsp;
+            Categories:
+            {% for category in course.categories.all %}
+                <a href="{% url 'course_category' category.name %}">
+                    {{ category.name }}
+                </a>&nbsp;
+            {% endfor %}
+        </small>
+        <p>{{ course.body | slice:":400"}}...</p>
+    {% endfor %}
+</div>
+{% endblock %}
+    
