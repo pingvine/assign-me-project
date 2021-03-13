@@ -6,6 +6,7 @@
     {% for course in courses %}
     <h2><a href="{% url 'course_detail' course.pk %}">{{ course.title }}</a></h2>
     <small>
+        Last updated:&nbsp;
         {{ course.created_on.date }} |&nbsp;
         Categories:&nbsp;
         {% for category in course.categories.all %}
