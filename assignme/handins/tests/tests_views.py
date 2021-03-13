@@ -5,6 +5,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from handins.models import Handin, Assignment
+from course.models import Course
 
 
 class HandinIndexViewTest(TestCase):
@@ -16,10 +17,14 @@ class HandinIndexViewTest(TestCase):
 
         test_user1.save()
 
+        course = Course(title='TDDD12', body='Big boody')
+        course.save()
+
         number_of_handins = 13
         assignment = Assignment(title='TDDD11',
                                 description='A desc.',
-                                deadline=datetime.today())
+                                deadline=datetime.today(),
+                                course=Course.objects.get(id=1))
         assignment.save()
 
         for handin_id in range(number_of_handins):
@@ -71,9 +76,13 @@ class HandinDetailViewTest(TestCase):
 
         test_user1.save()
 
+        course = Course(title='TDDD12', body='Big boody')
+        course.save()
+
         assignment = Assignment(title='TDDD11',
                                 description='A desc.',
-                                deadline=datetime.today())
+                                deadline=datetime.today(),
+                                course=Course.objects.get(id=1))
         assignment.save()
 
         Handin.objects.create(
