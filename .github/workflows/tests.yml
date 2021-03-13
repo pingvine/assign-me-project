@@ -98,5 +98,6 @@ jobs:
           PGUSER: assignme
           DATABASE_URL: postgresql://assignme:m364b374@localhost/assignme
           PYTHONPATH: /home/runner/work/assignme/assignme
+          DJANGO_SETTINGS_MODULE: assignme.conf.settings.testing
           SECRET_KEY: such secret very test
         run: python assignme/manage.py test
