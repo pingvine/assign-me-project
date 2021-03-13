@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import CommentForm
 from .models import Comment, Course
+from handins.models import Assignment
 
 
 def course_index(request):
@@ -39,8 +40,12 @@ def course_detail(request, pk):
             comment.save()
 
     comments = Comment.objects.filter(course=course)
+
+    assignments = Assignment.objects.filter(course=course)
+
     context = {
         "course": course,
+        "assignments": assignments,
         "comments": comments,
         "form": form,
     }

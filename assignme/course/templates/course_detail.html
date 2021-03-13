@@ -18,6 +18,12 @@
                 <li>{{ person.status }}: {{ person }}</li>
             {% endfor %}
         </ul>
+    <h3>Assignments</h3>
+    <ul>
+        {% for assignment in assignments %}
+            <li>{{ assignment.title }}</li>
+        {% endfor %}
+    </ul>
     <h3>Leave a comment:</h3>
     <form action="/course/{{ course.pk }}/" method="post">
         {% csrf_token %}

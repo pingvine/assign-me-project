@@ -43,6 +43,9 @@ class Assignment(models.Model):
     description = models.TextField()
     deadline = models.DateField()
 
+    course = models.ForeignKey(
+        'course.Course', on_delete=models.CASCADE)
+
     objects = models.Manager()
 
     def __str__(self):
