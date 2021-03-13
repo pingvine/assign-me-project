@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -18,6 +19,9 @@ class Course(models.Model):
     categories = models.ManyToManyField('Category', related_name='courses')
 
     objects = models.Manager()
+
+    def get_absolute_url(self):
+        return reverse("course_detail", kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.title
