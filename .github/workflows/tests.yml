@@ -92,7 +92,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-modules-
             ${{ runner.os }}-
-      # This step could ideally be removed after introducing a JS bundler and dropping django-compressor
       
       - name: Run tests with pytest
         env:
@@ -101,4 +100,4 @@ jobs:
           PYTHONPATH: /home/runner/work/assignme/assignme
           DJANGO_SETTINGS_MODULE: mb.conf.settings.testing
           SECRET_KEY: such secret very test
-        run: pytest -n4 tests/
+        run: python manage.py test
