@@ -36,13 +36,14 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <h3>Comments:</h3>
-    {% for comment in comments %}
-    <p>
-        On {{comment.created_on.date }}&nbsp;
-        <b>{{ comment.author }}</b> wrote:
-    </p>
-    <p>{{ comment.body }}</p>
-    <hr>
-    {% endfor %}
+    <div class="card-deck">
+        <div class="col">
+            {% for comment in comments %}
+                {% if not comment.is_reply %}
+                    {% include 'comment.html' with comment=comment%}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}
