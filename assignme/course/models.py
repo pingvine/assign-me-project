@@ -40,6 +40,10 @@ class Comment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     course = models.ForeignKey('Course', on_delete=models.CASCADE)
 
+    is_reply = models.BooleanField(default=False)
+    reply = models.ForeignKey(
+        'Comment', on_delete=models.CASCADE, blank=True, null=True)
+
     objects = models.Manager()
 
     def __str__(self):

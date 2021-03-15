@@ -1,0 +1,16 @@
+ <div class="card mt-3">
+    <div class="card-header">
+        <p>
+            On {{comment.created_on.date }}&nbsp;
+            <b>{{ comment.author }}</b> wrote:
+        </p>
+    </div>
+    <div class="card-body">
+        <p class="card-text ">{{ comment.body }}</p>
+        {% if comment.reply %}
+            <div class="ml-5">
+                {% include "comment.html" with comment=comment.reply %}
+            </div>
+        {% endif %}
+    </div>
+</div>
